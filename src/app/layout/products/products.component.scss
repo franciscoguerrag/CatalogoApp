@@ -1,0 +1,113 @@
+.catalog-container{
+  display: flex;
+
+  .check-container{
+    flex: 1;
+    padding-top: 70px;
+    max-width: 180px;
+    text-align: center;
+
+    .check-item{
+      width: 25px;
+      height: 25px;
+    }
+
+  }
+
+
+  .product-container{
+    display: flex;
+    flex-direction: row;
+    max-width: 880px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex: 2;
+
+    .product-container-item{
+      width: 220px;
+      height: 220px;
+    }
+  }
+
+  .order-container{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .form-container{
+      border: 1px solid lightgray;
+      width: 87%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      flex: 2;
+      box-shadow: 2px 2px 5px 0 chocolate;
+      border-radius: 14px;
+
+      .label-container{
+        display: flex;
+        flex-direction: column;
+        font-family: 'Courier New', Courier, monospace;
+        margin: 10px;
+        text-align: center;
+        border: 2px;
+      }
+
+      .orderForm-container{
+        padding: 10px;
+
+        .orderSub-container{
+          display: flex;
+          flex-direction: column;
+          height: 200px;
+          justify-content: space-between;
+
+          .close{
+            top: 6px;
+            position: absolute;
+            right: 80px;
+            background: white;
+            border: white;
+            cursor: pointer;
+          }
+
+          .save{
+            background-color: white;
+            border: white;
+            cursor: pointer;
+            right: 247px;
+            position: absolute;
+            top: 276px;
+          }
+
+          .icon-save{
+            height: 40px;
+            width: 40px;
+          }
+
+          .icon-big{
+            height: 25px;
+            width: 25px;
+          }
+
+        }
+      }
+
+      .button{
+        height: 20px;
+      }
+    }
+
+    .router-container{
+      display: flex;
+      flex: 1;
+      align-items: center;
+      padding-left: 80px;
+    }
+  }
+
+  .icon-max{
+    height: 100px;
+    width: 100px;
+  }
+}

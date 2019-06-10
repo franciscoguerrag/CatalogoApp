@@ -1,0 +1,67 @@
+<div class="catalog-container">
+  <div class="check-container">
+      <div><label style="font-size: 20px;color:chocolate">Solo con cantidad disponible</label></div>
+      <div><input class="check-item" type="checkbox"  id="isCheckBox" (change)="onlyQuantity($event)"/></div>
+  </div>
+  <div class="product-container">
+      <ng-container *ngFor="let product of products">
+        <product-item (activeProduct)='activeProduct($event)'
+          [product] = product  class="product-container-item">
+        </product-item>
+      </ng-container>
+  </div>
+  <div class="order-container">
+    <div class="form-container" *ngIf="active">
+        <div class="label-container">
+            <label style="font-weight: 600; font-size: 25px; line-height: 35px; margin-bottom: 10px">
+              {{productoActual.descripcion}}
+            </label>
+            <label style="font-size: 15px">
+               Cantidad Disponible: {{productoActual.cantidadDisponible}}
+            </label>
+        </div>
+        <div class="orderForm-container">
+        <form [formGroup]="orderForm" (ngSubmit)="onSubmit()" novalidate id="orderForm">
+            <div class="orderSub-container">
+                <div>
+                    <input type="text" formControlName="nameOrder" name="nameOrder" placeholder="Nombre" id="order_nameOrder">
+                    <div  *ngIf="orderForm.controls.nameOrder.touched && orderForm.controls.nameOrder.errors">
+                        <p  *ngIf="orderForm.controls.nameOrder.errors.required">El nombre es requerido</p>
+                    </div>
+                </div>
+                <div>
+                    <input type="text" formControlName="addressOrder" name="addressOrder" placeholder="Dirección" id="order_addressOrder">
+                    <div  *ngIf="orderForm.controls.addressOrder.touched && orderForm.controls.addressOrder.errors">
+                        <p  *ngIf="orderForm.controls.addressOrder.errors.required">La dirección es requerida</p>
+                    </div>
+                </div>
+                <div>
+                    <select id="order_cityOrder" formControlName="cityOrder">
+                       <option *ngFor="let c of cities" [ngValue]="c">{{ c }}</option>
+                    </select>
+                </div>
+                <div>
+                        <input type="file" (change)="onFileChange($event)" />
+                        <div  *ngIf="orderForm.controls.file.touched && orderForm.controls.file.errors">
+                            <p  *ngIf="orderForm.controls.file.errors.required">Tipo requerido</p>
+                        </div>
+                </div>
+                <div>
+                  Fecha de nacimiento: 
+                        <input formControlName="dateOrder" type="text" daterangepicker
+                            [options]="dateOptions" name="dateOrder" placeholder="Fecha de Nacimiento" (selected)="updateDate($event)">
+                 </div>
+                 <div>
+                     <button class="save" type="submit" [disabled]="!orderForm.valid" id="orderForm_submit"><img src="assets/save.svg" class="icon-save" alt="Guardar"></button>
+                     <button class="close" type="button" (click)="cancel()" id="orderForm_submit_cancel"><img src="assets/close.svg" class="icon-big" alt="Cerrar"></button>
+                 </div>
+            </div>
+            
+      </form>
+      </div>
+    </div>
+    <div class="router-container">
+       <a routerLink="/sales/orders" routerLinkActive="active"> <img src="assets/cart.svg" class="icon-max" alt="Cart"></a>
+     </div>
+  </div>
+</div>

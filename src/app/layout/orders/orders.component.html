@@ -1,0 +1,88 @@
+<div class='container'>
+  <div class="router-container">
+     <a routerLink="/sales/products" routerLinkActive="active"><img src="assets/undo.svg" class="icon-max" alt="Retornar"></a>
+  </div>
+  <div class="catalog-container">
+    <div class="table-container">
+      <table>
+        <thead>
+          <th># Orden ID</th>
+          <th>Descripcion</th>
+          <th>cantidadDisponible</th>
+          <th>Ciudad</th>
+          <th>Dirección de envio</th>
+          <th>Nombre</th>
+          <th>Fecha de nacimiento</th>
+          <th># Producto ID</th>
+          <th>Archivo</th>
+          <th></th>
+        </thead>
+        <tbody *ngIf="orders">
+            <tr *ngFor="let order of orders">
+              <td>{{order.idOrder}}</td>
+              <td>{{order.descripcion}}</td>
+              <td>{{order.cantidadDisponible}}</td>
+              <td>{{order.cityOrder}}</td>
+              <td>{{order.addressOrder}}</td>
+              <td>{{order.nameOrder}}</td>
+              <td>{{order.dateOrder?order.dateOrder.substr(0,10):''}}</td>
+              <td>{{order.idProducto}}</td>
+              <td >{{order.file?order.file.substr(0,16):''}}</td>
+              <td>
+                <button class="edit-button" type="button" (click)="edit(order.idOrder)">
+                    <img src="assets/edit.svg" class="icon-small" alt="Editar">
+                </button>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="order-container" *ngIf="editButton"> 
+    <div class="form-container" >
+        <div class="label-container">
+            <label style="font-weight: 600; font-size: 20px; line-height: 35px; margin-bottom: 10px">
+                # Orden ID 
+            </label>
+            <label style="font-size: 15px">
+                {{currentOrder.idOrder?currentOrder.idOrder.substr(0,10):''}}
+            </label>
+        </div>
+        <div class="orderForm-container">
+        <form [formGroup]="orderForm" (ngSubmit)="onSubmit()" novalidate id="orderForm">
+            <div class="orderSub-container">
+                <div>
+                    <input type="text" formControlName="nameOrder" name="nameOrder" placeholder="Nombre" id="order_nameOrder">
+                    <div  *ngIf="orderForm.controls.nameOrder.touched && orderForm.controls.nameOrder.errors">
+                        <p  *ngIf="orderForm.controls.nameOrder.errors.required">El nombre es requerido</p>
+                    </div>
+                </div>
+                <div>
+                    <input type="text" formControlName="addressOrder" name="addressOrder" placeholder="Dirección" id="order_addressOrder">
+                    <div  *ngIf="orderForm.controls.addressOrder.touched && orderForm.controls.addressOrder.errors">
+                        <p  *ngIf="orderForm.controls.addressOrder.errors.required">La dirección es requerida</p>
+                    </div>
+                </div>
+                <div>
+                    <select id="order_cityOrder" formControlName="cityOrder">
+                       <option *ngFor="let c of cities" [ngValue]="c">{{ c }}</option>
+                    </select>
+                </div>
+                <div>
+                        <input type="file" (change)="onFileChange($event)" />
+                </div>
+                <div>
+                        <input formControlName="dateOrder" type="text" daterangepicker
+                            [options]="dateOptions" name="dateOrder" placeholder="Fecha de Nacimiento" (selected)="updateDate($event)">
+                 </div>
+                 <div>
+                    <button class="save" type="submit" [disabled]="!orderForm.valid" id="orderForm_submit" alt="Guardar"><img src="assets/save.svg" class="icon-save" alt="Guardar"></button>
+                    <button class="close" type="button" (click)="cancel()" id="orderForm_submit_cancel" alt="Cerrar"><img src="assets/close.svg" class="icon-big" alt="Cerrar"></button>
+                 </div>
+            </div>
+        </form>
+       </div>
+    </div>
+  </div>
+  
+</div>

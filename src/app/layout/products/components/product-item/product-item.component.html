@@ -1,0 +1,16 @@
+<div class="product-item-container" (click)="activateProduct()" [ngClass]="{'product-item-container-active':product.activo}">
+    <div *ngIf="!product.activo" >
+        <img [src]="product.miniatura" class="miniatura">
+    </div>
+    <div *ngIf="product.activo" class="imagen" >
+        <img [src]="product.imagen" class="imagen">
+    </div>
+    <div class="label-container">
+      <label style="font-weight: 600; font-size: 20px; line-height: 30px; margin-bottom: 8px">
+        {{product.descripcion}}
+      </label>
+      <label style="font-size: 12px">
+        Cantidad Disponible: {{product.cantidadDisponible}}
+      </label>
+    </div>
+</div>

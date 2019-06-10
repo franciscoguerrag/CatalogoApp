@@ -1,0 +1,133 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  
+  .router-container{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    padding-left: 80px;
+    height: 40px;
+    justify-content: center;
+    padding-bottom: 30px;
+  }
+
+  .catalog-container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+
+    .table-container{
+      justify-content: center;
+      display: flex;
+      padding: 20px;
+      border: 1px solid chocolate;
+      margin: 10px;
+
+      table {
+        border-collapse: collapse;
+      }
+      
+      table, th, td {
+        border: 1px solid black;
+      }
+  
+      .edit-button {
+        background: white;
+        padding: 5px;
+        background-color: white;
+        border: white;
+        cursor: pointer;
+      }
+    
+      .icon-small{
+        height: 20px;
+        width: 20px;
+      }
+
+    }
+
+
+    
+  }
+  .order-container{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10px;
+    background-color: white;
+    right: 500px;
+    border: 1px solid gainsboro;
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+    min-width: 300px;
+
+    .form-container{
+      border: 1px solid gainsboro;
+      width: 50%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      flex: 2;
+
+      .label-container{
+        display: flex;
+        flex-direction: column;
+        font-family: 'Courier New', Courier, monospace;
+        margin: 10px;
+        text-align: center;
+        border: 2px;
+      }
+
+      .orderForm-container{
+        padding: 10px;
+
+        .orderSub-container{
+          display: flex;
+          flex-direction: column;
+          height: 160px;
+          justify-content: space-between;
+
+          .close{
+            top: 6px;
+            position: absolute;
+            right: 5px;
+            background-color: white;
+            border: white;
+            cursor: pointer;
+          }
+
+          .save{
+            background-color: white;
+            border: white;
+            cursor: pointer;
+            right: 125px;
+            position: absolute;
+          }
+
+          .icon-big{
+            height: 25px;
+            width: 25px;
+          }
+
+          .icon-save{
+            height: 40px;
+            width: 40px;
+          }
+        }
+      }
+
+      .button{
+        height: 20px;
+      }
+    }
+  }
+
+  .icon-max{
+    height: 100px;
+    width: 100px;
+  }
+}
